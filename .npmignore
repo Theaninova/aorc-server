@@ -1,0 +1,11 @@
+# Ignore all files/folders by default
+# See https://stackoverflow.com/a/29932318
+/*
+# Except these files/folders
+!docs
+!lib
+!LICENSE
+!package.json
+!package-lock.json
+!README.md
+!src
