@@ -4,18 +4,24 @@ Route fragment: `/controllers`
 
 ## Events
 
-### `/controllers/userJoined`
-### `/controllers/userLeft`
-
-## Forwarded Events
-
-All forwarded events have the following format:
+All events have the following format:
 ```ts
 interface ClientData<T> {
   user: string;
   data: T;
 }
 ```
+
+### `/controllers/userJoined`
+Emitted when a user joined
+
+**data**: `undefined`
+
+### `/controllers/userLeft`
+
+Emitted when a user left
+
+**data**: `undefined`
 
 ### `loadLevel`
 
@@ -48,5 +54,17 @@ interface StageUpdateData {
     engineCondition: number; // sbyte
     dirtiness: number; // sbyte
   }
+}
+```
+
+### `eventStart`
+
+### `eventOver`
+
+```ts
+interface EventOverData {
+  terminalDamage: boolean;
+  finalTime: number; // seconds fraction
+  penalties: number; // int
 }
 ```

@@ -4,11 +4,11 @@ import {forwardAll} from './util'
 export function configureUsers() {
   users.on('connection', socket => {
     console.log(`User ${socket.id} connected`)
-    controllers.emit('userJoined', socket.id)
+    controllers.emit('userJoined', {user: socket.id})
 
     socket.on('disconnecting', reason => {
       console.log(`Client disconnected for reason: ${reason}`)
-      controllers.emit('userLeft', socket.id)
+      controllers.emit('userLeft', {user: socket.id})
     })
 
     forwardAll(socket, ['loadLevel', 'stageUpdate'])
