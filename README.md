@@ -1,5 +1,12 @@
 # AORC Server
 
+[![](https://img.shields.io/github/v/release/Theaninova/aorc-reference-observer?label=Download)](https://github.com/Theaninova/Art-Of-Rally-Reset-Visualizer/releases/latest)
+![](https://img.shields.io/badge/Game%20Version-v1.3.3a-blue)
+[![Art Or Rally Discord](https://badgen.net/discord/members/Sx3e7qGTh9)](https://discord.gg/Sx3e7qGTh9)
+
+[![](https://img.shields.io/badge/Controller%20Reference%20Implementation-GitHub-23292F)](https://github.com/Theaninova/aorc-reference-observer)
+[![](https://img.shields.io/badge/AOR%20Client%20Mod-GitHub-23292F)](https://github.com/Theaninova/aorc-client)
+
 *This gives you an overview of the protocol you can use from a controller*
 
 Route fragment: `/controllers`
@@ -14,12 +21,12 @@ interface ClientData<T> {
 
 ## Events
 
-### `/controllers/userJoined`
+### `userJoined`
 Emitted when a user joined
 
 **data**: `undefined`
 
-### `/controllers/userLeft`
+### `userLeft`
 
 Emitted when a user left
 
