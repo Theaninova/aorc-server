@@ -11,9 +11,9 @@ Route fragment: `/controllers`
 
 All forwarded events have the following format:
 ```ts
-{
+interface ClientData<T> {
   user: string;
-  data: any;
+  data: T;
 }
 ```
 
@@ -29,12 +29,15 @@ Emitted when the in-game timer changes
 
 **data**:
 ```ts
+type Vector3 = [number, number, number]; // float
+type RotationApproximate = [number, number, number]; // byte
+
 interface StageUpdateData {
   time: number; // seconds fraction
-  carData: {
+  carData?: {
     frame: number; // int
-    position: Vector3; // Vector3 is serialized as {x, y, z} (float)
-    rotation: RotationApproximate; // RotationApproximate are euler angles serialized as {x, y, z} (byte)
+    position: Vector3;
+    rotation: RotationApproximate;
     velocity: Vector3;
     throttleInput: number; // sbyte
     steeringInput: number; // sbyte
@@ -42,8 +45,8 @@ interface StageUpdateData {
     handbrakeInput: boolean;
     gear: number; // byte
     resetCarThisFrame: boolean;
-    engineCondition; // sbyte
-    dirtyness; // sbyte
+    engineCondition: number; // sbyte
+    dirtiness: number; // sbyte
   }
 }
 ```
