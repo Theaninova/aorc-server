@@ -46,23 +46,21 @@ Emitted when the in-game timer changes
 
 ```ts
 type Vector3 = [number, number, number]; // float
-type RotationApproximate = [number, number, number]; // byte
 
 interface StageUpdateData {
   time: number; // seconds fraction
   carData?: {
-    frame: number; // int
     position: Vector3;
-    rotation: RotationApproximate;
+    rotation: Vector3;
     velocity: Vector3;
-    throttleInput: number; // sbyte
-    steeringInput: number; // sbyte
-    brakeInput: number; // sbyte
-    handbrakeInput: boolean;
-    gear: number; // byte
-    resetCarThisFrame: boolean;
-    engineCondition: number; // sbyte
-    dirtiness: number; // sbyte
+    throttleInput: number; // float
+    steeringInput: number; // float
+    brakeInput: number; // float
+    handbrakeInput: number; // float
+    clutchInput: number; // float
+    absTriggered: boolean;
+    tcsTriggered: boolean;
+    espTriggered: boolean;
     drivetrain: {
       clutch: number; // float
       rpm: number; // float

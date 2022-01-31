@@ -10,6 +10,9 @@ export function configureUsers() {
       console.log(`Client disconnected for reason: ${reason}`)
       controllers.emit('userLeft', {user: socket.id})
     })
+    socket.on('error', error => {
+      console.log(`Client error: ${error}`)
+    })
 
     forwardAll(socket, ['loadLevel', 'stageUpdate'])
   })
