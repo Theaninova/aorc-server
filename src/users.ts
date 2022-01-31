@@ -1,4 +1,5 @@
 import {controllers, users} from './main'
+import {forwardAll} from './util'
 
 export function configureUsers() {
   users.on('connection', socket => {
@@ -9,9 +10,8 @@ export function configureUsers() {
       console.log(`Client disconnected for reason: ${reason}`)
       controllers.emit('userLeft', socket.id)
     })
-    socket.on('load_level', (level: number) => {
-      console.log(`Loading level ${level}`)
-    })
+
+    forwardAll(socket, ['loadLevel', 'timerUpdate'])
   })
   users.on('error', error => console.log(error))
 }
