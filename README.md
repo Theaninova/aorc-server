@@ -15,7 +15,15 @@ interface ClientData<T> {
 ## Events
 
 ### `/controllers/userJoined`
+Emitted when a user joined
+
+**data**: `undefined`
+
 ### `/controllers/userLeft`
+
+Emitted when a user left
+
+**data**: `undefined`
 
 ### `loadLevel`
 
