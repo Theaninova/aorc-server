@@ -11,7 +11,7 @@ export function configureUsers() {
       controllers.emit('userLeft', socket.id)
     })
 
-    forwardAll(socket, ['loadLevel', 'timerUpdate'])
+    forwardAll(socket, ['loadLevel', 'stageUpdate'])
   })
   users.on('error', error => console.log(error))
 }

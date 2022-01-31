@@ -23,8 +23,27 @@ Emitted when a level is loaded
 
 **data**: `levelId: number`
 
-### `timerUpdate`
+### `stageUpdate`
 
 Emitted when the in-game timer changes
 
-**data**: `timeMs: number`
+**data**:
+```ts
+interface StageUpdateData {
+  time: number; // seconds fraction
+  carData: {
+    frame: number; // int
+    position: Vector3; // Vector3 is serialized as {x, y, z} (float)
+    rotation: RotationApproximate; // RotationApproximate are euler angles serialized as {x, y, z} (byte)
+    velocity: Vector3;
+    throttleInput: number; // sbyte
+    steeringInput: number; // sbyte
+    brakeInput: number; // sbyte
+    handbrakeInput: boolean;
+    gear: number; // byte
+    resetCarThisFrame: boolean;
+    engineCondition; // sbyte
+    dirtyness; // sbyte
+  }
+}
+```
