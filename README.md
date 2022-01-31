@@ -43,6 +43,7 @@ Emitted when a level is loaded
 Emitted when the in-game timer changes
 
 **data**:
+
 ```ts
 type Vector3 = [number, number, number]; // float
 type RotationApproximate = [number, number, number]; // byte
@@ -62,6 +63,22 @@ interface StageUpdateData {
     resetCarThisFrame: boolean;
     engineCondition: number; // sbyte
     dirtiness: number; // sbyte
+    drivetrain: {
+      clutch: number; // float
+      rpm: number; // float
+      torque: number; // float
+      gear: number; // int
+      wheelTireVelocity: number; // float
+      canStall: boolean;
+      throttle: number; // float
+      shiftTriggered: boolean;
+      canShiftAgain: boolean;
+      currentPower: number; // float
+      currentGearRatio: number; // float
+      isChangingGear: boolean;
+      velocity: number; // float
+      isStalling: boolean;
+    }
   }
 }
 ```
