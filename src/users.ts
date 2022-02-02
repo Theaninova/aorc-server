@@ -14,7 +14,7 @@ export function configureUsers() {
       console.log(`Client error: ${error}`)
     })
 
-    forwardAll(socket, ['loadLevel', 'stageUpdate'])
+    forwardAll(socket, ['loadLevel', 'stageUpdate', 'waypointsGathered'])
   })
   users.on('error', error => console.log(error))
 }
