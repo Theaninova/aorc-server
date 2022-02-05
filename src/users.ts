@@ -1,5 +1,6 @@
 import {controllers, users} from './main'
 import {forwardAll} from './util'
+import {writeFileSync} from 'fs'
 
 export function configureUsers() {
   users.on('connection', socket => {
@@ -13,8 +14,15 @@ export function configureUsers() {
     socket.on('error', error => {
       console.log(`Client error: ${error}`)
     })
+    socket.on('carsInfo', info => writeFileSync('data/cars.json', info))
+    socket.on('stagesInfo', info => writeFileSync('data/stages.json', info))
+    socket.on('translationSourceAdded', info => writeFileSync('data/translations.json', info))
 
     forwardAll(socket, ['loadLevel', 'stageUpdate', 'waypointsGathered'])
+
+    socket.on('replayUpdated', data => {
+      socket.broadcast.emit('replayReceived', data)
+    })
   })
   users.on('error', error => console.log(error))
 }
