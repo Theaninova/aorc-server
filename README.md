@@ -12,7 +12,7 @@
 
 #### Platform Support
 ![](https://img.shields.io/badge/Windows-Supprted-green)
-![](https://img.shields.io/badge/Linux-Not_Built-yellow)
+![](https://img.shields.io/badge/Linux-Supported-green)
 ![](https://img.shields.io/badge/OS%2FX-Not_Built-yellow)
 
 ## Info
