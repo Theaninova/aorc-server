@@ -49,7 +49,6 @@ export function configureMultiplayer() {
 
   multiplayer.adapter.on('join-room', (room: string, socket) => {
     console.log(`Multiplayer User ${socket.id} joined room ${room}`)
-    console.log(roomPlayers(room))
     multiplayer.to(room).emit('playersUpdated', roomPlayers(room))
   })
 
