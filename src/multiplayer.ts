@@ -25,7 +25,7 @@ export function configureMultiplayer() {
     })
 
     socket.on('joinLobby', (lobby: number) => {
-      console.log(`Multiplayer User ${socket.id} joined lobby`)
+      console.log(`Multiplayer User ${socket.id} joined lobby ${lobby}`)
       socket.join(lobby.toString())
     })
     socket.on('leaveLobby', () => {
@@ -49,6 +49,7 @@ export function configureMultiplayer() {
 
   multiplayer.adapter.on('join-room', (room: string, socket) => {
     console.log(`Multiplayer User ${socket.id} joined room ${room}`)
+    console.log(roomPlayers(room))
     multiplayer.to(room).emit('playersUpdated', roomPlayers(room))
   })
 
