@@ -7,9 +7,7 @@ function roomPlayers(room: string): string[] {
 
 function broadcastRooms(socket: Socket, event: string): void {
   socket.on(event, data => {
-    for (const room of socket.rooms) {
-      socket.to(room).emit(event, data)
-    }
+    socket.to([...socket.rooms]).emit(event, data)
   })
 }
 
@@ -35,7 +33,7 @@ export function configureMultiplayer() {
       }
     })
 
-    broadcastAllRooms(socket, ['replayUpdated', 'startEvent'])
+    broadcastAllRooms(socket, ['replayUpdated', 'startEvent', 'ghostData'])
     /*socket.on('multiplayerChangeMap', data => {
       socket.broadcast.emit('multiplayerChangeMap', data)
     })
