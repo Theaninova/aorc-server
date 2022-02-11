@@ -1,6 +1,7 @@
 import {Server} from 'socket.io'
 import {configureControllers} from './controllers'
 import {configureUsers} from './users'
+import {configureMultiplayer} from './multiplayer'
 
 const port = Number(process.env.PORT) || 4593
 export const io = new Server({
@@ -9,9 +10,11 @@ export const io = new Server({
   },
 })
 export const users = io.of('users')
+export const multiplayer = io.of('multiplayer')
 export const controllers = io.of('controllers')
 configureControllers()
 configureUsers()
+configureMultiplayer()
 
 io.listen(port)
 console.log(`Server is running on port ${port}`)

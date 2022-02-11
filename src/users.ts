@@ -19,19 +19,6 @@ export function configureUsers() {
     socket.on('translationSourceAdded', info => writeFileSync('data/translations.json', info))
 
     forwardAll(socket, ['loadLevel', 'stageUpdate', 'waypointsGathered'])
-
-    socket.on('replayUpdated', data => {
-      socket.broadcast.emit('replayReceived', data)
-    })
-    socket.on('multiplayerChangeMap', data => {
-      socket.broadcast.emit('multiplayerChangeMap', data)
-    })
-    socket.on('multiplayerChangeRally', data => {
-      socket.broadcast.emit('multiplayerChangeRally', data)
-    })
-    socket.on('multiplayerLoadMap', data => {
-      socket.broadcast.emit('multiplayerLoadMap', data)
-    })
   })
   users.on('error', error => console.log(error))
 }
